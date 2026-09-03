@@ -2,6 +2,8 @@
 
 A 3rd-person action RPG. Full design in [docs/GAME_DESIGN.md](docs/GAME_DESIGN.md).
 
+Repo: <https://github.com/umaribnyk3gmailcom-cmyk/glungus-forest>
+
 ## Repo layout
 
 ```
@@ -40,25 +42,24 @@ Try it: open `server/api.http` in VS Code (with the "REST Client" extension) and
 
 ## Running the game (client)
 
-1. Install [Godot 4](https://godotengine.org/download) (standard build, not .NET).
+1. Install [Godot 4](https://godotengine.org/download) (standard build, 4.2+, not .NET).
 2. In Godot: **Import** -> pick the `client/` folder -> **Edit** -> press **F5**.
-3. You'll get the sign-in screen. Start the server first (above) so it can log in.
+3. Sign-in screen. Start the server first (above), or click **Play offline**.
 
-More detail in [client/README.md](client/README.md).
+Full walkthrough + controls in [client/README.md](client/README.md).
 
 ## Deploying the server to Railway
 
-1. Push this repo to GitHub (see below).
-2. On [railway.app](https://railway.app): **New Project -> Deploy from GitHub repo**, pick this repo.
-3. In the service **Settings -> Root Directory**, set it to `server`.
-4. Add a database: **New -> Database -> PostgreSQL**. Railway sets `DATABASE_URL` for you.
-5. Add a variable: `JWT_SECRET` = a long random string.
-6. Deploy. Railway runs `npm install` then `npm start`.
+Step by step in [docs/DEPLOY.md](docs/DEPLOY.md). Short version: New Project ->
+Deploy from GitHub -> set Root Directory to `server` -> add PostgreSQL -> add a
+`JWT_SECRET` variable -> generate a domain.
 
-## Pushing to GitHub
+## Pushing changes
+
+The repo is already on GitHub. To push new work:
 
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/glungus-forest.git
-git branch -M main
-git push -u origin main
+git add -A
+git commit -m "what you changed"
+git push
 ```

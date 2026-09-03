@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/glungus.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/props/tree.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/props/berry.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/props/checkpoint.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/props/portal.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="7"]
+[ext_resource type="Script" path="res://scripts/world_1.gd" id="8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat"]
+sky_horizon_color = Color(0.6, 0.7, 0.8, 1)
+ground_horizon_color = Color(0.4, 0.45, 0.4, 1)
+
+[sub_resource type="Sky" id="Sky"]
+sky_material = SubResource("SkyMat")
+
+[sub_resource type="Environment" id="Env"]
+background_mode = 2
+sky = SubResource("Sky")
+ambient_light_source = 3
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.7, 0.78, 0.82, 1)
+fog_density = 0.008
+
+[sub_resource type="BoxMesh" id="GroundMesh"]
+size = Vector3(70, 1, 110)
+
+[sub_resource type="BoxShape3D" id="GroundShape"]
+size = Vector3(70, 1, 110)
+
+[sub_resource type="StandardMaterial3D" id="GroundMat"]
+albedo_color = Color(0.28, 0.44, 0.24, 1)
+
+[node name="World1" type="Node3D"]
+script = ExtResource("8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+position = Vector3(0, 20, 0)
+rotation = Vector3(-0.9, -0.6, 0)
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -16)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("GroundMesh")
+surface_material_override/0 = SubResource("GroundMat")
+
+[node name="Collision" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("GroundShape")
+
+[node name="Player" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8)
+
+[node name="Glungus" parent="." instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Checkpoint" parent="." instance=ExtResource("5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -14)
+
+[node name="Portal" parent="." instance=ExtResource("6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+
+[node name="Berries" type="Node3D" parent="."]
+
+[node name="Berry1" parent="Berries" instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -6)
+
+[node name="Berry2" parent="Berries" instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.5, -18)
+
+[node name="Berry3" parent="Berries" instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -30)
+
+[node name="Trees" type="Node3D" parent="."]
+
+[node name="T1" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
+
+[node name="T2" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -10, 0, 3)
+
+[node name="T3" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -8)
+
+[node name="T4" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -13, 0, -10)
+
+[node name="T5" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 8, 0, -18)
+
+[node name="T6" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -24)
+
+[node name="T7" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 14, 0, -28)
+
+[node name="T8" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -32)
+
+[node name="T9" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 7, 0, -38)
+
+[node name="T10" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -8, 0, -40)
+
+[node name="T11" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -2)
+
+[node name="T12" parent="Trees" instance=ExtResource("3")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -18, 0, -16)
+
+[node name="HUD" parent="." instance=ExtResource("7")]

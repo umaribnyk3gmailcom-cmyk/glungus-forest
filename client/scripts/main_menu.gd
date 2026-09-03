@@ -27,8 +27,12 @@ func _on_register_pressed() -> void:
 
 func _on_auth_succeeded(_player: Dictionary) -> void:
 	status_label.text = "Welcome, %s!" % Api.username
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	get_tree().change_scene_to_file("res://scenes/world_1.tscn")
 
 
 func _on_request_failed(message: String) -> void:
-	status_label.text = message
+	status_label.text = message + "  (or press Play offline)"
+
+
+func _on_play_offline_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/world_1.tscn")

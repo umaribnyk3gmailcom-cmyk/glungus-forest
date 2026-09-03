@@ -4,25 +4,43 @@ The game itself. Built in **Godot 4** (GDScript).
 
 ## Opening it
 
-1. Install [Godot 4](https://godotengine.org/download) (the standard build, not .NET).
+1. Install [Godot 4](https://godotengine.org/download) (standard build, 4.2 or newer, not .NET).
 2. Open Godot, click **Import**, and pick this `client/` folder (`project.godot`).
-3. Press **F5** to run. You'll get the sign-in screen.
+   If it offers to convert the project to your version, say yes.
+3. Press **F5** to run. You get the sign-in screen.
+   - With the server running, register a name + password to play.
+   - Without a server, click **Play offline** (progress won't save).
 
-To sign in you need the backend running - see the [root README](../README.md#running-the-server-locally).
-With no server, the buttons will just show a "could not reach the server" message.
+## How to play the test level (World 1)
 
-## What's here so far
+- **Arrow keys** move, **Space** jumps, **mouse** looks, **Esc** frees the cursor.
+- Walk up to **Glungus** (the blue creature) and press **E** to talk. He gives you
+  a quest: collect **3 glow-berries** (the glowing dots near the trees).
+- Walk into berries to pick them up.
+- Step on the **blue pad** to save your progress (checkpoint).
+- Talk to Glungus again once you have all 3. He opens the **portal**... and then
+  gets snatched (that's the Act 1 hook from the design doc).
+- Walk into the portal.
 
-| File | What it is |
+## What's here
+
+| Files | What it is |
 |---|---|
-| `scripts/api.gd` | Autoload singleton `Api`. All backend calls live here. |
-| `scenes/main_menu.tscn` + `scripts/main_menu.gd` | Sign-in screen (register / log in). |
-| `scenes/game.tscn` + `scripts/game.gd` | Placeholder level. Loads your save on start; press **F5** in-game to fake a checkpoint save. |
-| `scenes/player.tscn` + `scripts/player.gd` | 3rd-person capsule you can walk around. Arrow keys + Space + mouse. |
+| `scripts/api.gd` | Autoload `Api`. Every backend call lives here. |
+| `scripts/quest_manager.gd` | Autoload `Quests`. Tracks the current quest, berries, currency; pushes saves to the backend. |
+| `scenes/main_menu.tscn` + `scripts/main_menu.gd` | Sign-in screen. |
+| `scenes/world_1.tscn` + `scripts/world_1.gd` | **World 1 - Glungus's Forest.** The playable level. |
+| `scenes/player.tscn` + `scripts/player.gd` | 3rd-person character controller. |
+| `scenes/glungus.tscn` + `scripts/glungus.gd` | Glungus NPC - gives the starter quest, then vanishes. |
+| `scenes/hud.tscn` + `scripts/hud.gd` | Quest tracker, currency, prompts, dialogue box. |
+| `scenes/props/berry.tscn` + `scripts/berry.gd` | Collectible glow-berry. |
+| `scenes/props/checkpoint.tscn` + `scripts/checkpoint.gd` | Save point. |
+| `scenes/props/portal.tscn` + `scripts/portal.gd` | End-of-world portal (sealed until the quest is done). |
+| `scenes/props/tree.tscn` | A tree. |
 
 ## Using the backend from anywhere in the game
 
-`Api` is a global. Examples:
+`Api` and `Quests` are globals. Examples:
 
 ```gdscript
 Api.login("player1", "hunter2")
@@ -39,24 +57,14 @@ Api.leaderboard_loaded.connect(func(rows): print(rows))
 Api.record_boss_kill()
 ```
 
-**After deploying to Railway**, change `BASE_URL` at the top of `scripts/api.gd`
-to your Railway URL.
-
-## Shared data
-
-World and item definitions live in `../shared/` (`worlds.json`, `items.json`).
-Load them at runtime so the client and server never disagree:
-
-```gdscript
-var worlds := JSON.parse_string(FileAccess.get_file_as_string("res://../shared/worlds.json"))
-```
-
-(or copy those files into `client/` and load with a normal `res://` path.)
+**After deploying the server** (see [../docs/DEPLOY.md](../docs/DEPLOY.md)), change
+`BASE_URL` at the top of `scripts/api.gd` to your Railway URL.
 
 ## Next steps
 
-- Replace the capsule with a real character model.
-- Build world 1 (Glungus's Forest) as its own scene, with a portal at the end.
-- Add a Glungus NPC that hands out the starter quests.
-- Add a checkpoint object (weapon / potion / skins / healing stations).
-- Multiplayer comes later - get single-player fun first (see design doc section 6).
+- Replace the capsules with real character models.
+- Give World 1 real terrain and a path instead of a flat box.
+- Add enemies that scale with level (Blox Fruits style).
+- Build the checkpoint's weapon / potion / skins / healing stations.
+- Build World 2, set the portal's `target_scene` to it.
+- Multiplayer comes later - get single-player fun first (design doc section 6).

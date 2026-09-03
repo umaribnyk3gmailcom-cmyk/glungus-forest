@@ -60,5 +60,10 @@ layout_mode = 2
 text = "Pick a name and password to start."
 horizontal_alignment = 1
 
+[node name="PlayOffline" type="Button" parent="CenterContainer/VBox"]
+layout_mode = 2
+text = "Play offline"
+
 [connection signal="pressed" from="CenterContainer/VBox/Buttons/LoginButton" to="." method="_on_login_pressed"]
 [connection signal="pressed" from="CenterContainer/VBox/Buttons/RegisterButton" to="." method="_on_register_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/PlayOffline" to="." method="_on_play_offline_pressed"]

@@ -182,9 +182,13 @@ Newcomer arrives
 **Source control:** GitHub repo.
 **Backend hosting:** Railway.
 
-Current status: the **server** is built (Node + Express + Postgres) and the
-**client** has a Godot 4 project with sign-in wired to the backend. Everything
-else below is still to do.
+Current status:
+- **Server** built (Node + Express + Postgres): sign-in, save data, leaderboard.
+- **Client** (Godot 4): sign-in screen, and **World 1 - Glungus's Forest** is
+  playable - walk around, talk to Glungus, do the glow-berry starter quest, hit a
+  checkpoint (saves to the backend), reach the portal, watch Glungus get snatched.
+- **Still to do:** real terrain/art, enemies, more worlds, the checkpoint
+  stations, pets, daily quests, multiplayer.
 
 The backend needs to handle:
 

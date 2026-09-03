@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/glungus.gd" id="1"]
+
+[sub_resource type="SphereMesh" id="BodyMesh"]
+radius = 0.6
+height = 1.2
+
+[sub_resource type="StandardMaterial3D" id="Fur"]
+albedo_color = Color(0.55, 0.75, 0.95, 1)
+
+[sub_resource type="BoxMesh" id="EarMesh"]
+size = Vector3(0.25, 0.35, 0.15)
+
+[sub_resource type="StandardMaterial3D" id="Crown"]
+albedo_color = Color(1, 0.85, 0.2, 1)
+emission_enabled = true
+emission = Color(0.8, 0.65, 0.1, 1)
+
+[sub_resource type="SphereShape3D" id="AreaShape"]
+radius = 3.0
+
+[node name="Glungus" type="Area3D"]
+script = ExtResource("1")
+
+[node name="Body" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Torso" type="MeshInstance3D" parent="Body"]
+mesh = SubResource("BodyMesh")
+surface_material_override/0 = SubResource("Fur")
+
+[node name="EarL" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28, 0.5, 0)
+mesh = SubResource("EarMesh")
+surface_material_override/0 = SubResource("Fur")
+
+[node name="EarR" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28, 0.5, 0)
+mesh = SubResource("EarMesh")
+surface_material_override/0 = SubResource("Fur")
+
+[node name="Crown" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1.6, 0, 0, 0, 0.3, 0, 0, 0, 1.6, 0, 0.8, 0)
+mesh = SubResource("EarMesh")
+surface_material_override/0 = SubResource("Crown")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("AreaShape")
