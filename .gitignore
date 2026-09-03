@@ -8,5 +8,5 @@ dist/
 build/
 .DS_Store
 Thumbs.db
-.vscode/
+.vscode/*
 !.vscode/extensions.json
