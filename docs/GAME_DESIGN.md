@@ -17,8 +17,9 @@ beginning.
   (level-scaled enemies, progression), Pokémon (how characters, items, the
   quest-giver, and the interface are presented)
 - **Perspective:** 3rd person
-- **Platform target:** online multiplayer game (PC / Roblox-style client), with a
-  backend hosted on **Railway** and source code on **GitHub**
+- **Engine:** Godot 4 (GDScript)
+- **Platform target:** PC. Online multiplayer, with a backend hosted on **Railway**
+  and source code on **GitHub**
 
 ---
 
@@ -150,8 +151,8 @@ Each checkpoint contains:
 - **Sign-in system:** each player has an account.
   - Account stores: character progress, level, currency, unlocked worlds, skins,
     pets, quest progress, leaderboard stats
-  - Sign-in options to consider: username + password, or "sign in with Google" /
-    Roblox / Discord (less for players to remember)
+  - Sign-in options to consider: username + password (built - see the server), or
+    later "sign in with Google" / Discord (less for players to remember)
 
 ---
 
@@ -177,8 +178,13 @@ Newcomer arrives
 
 ## 8. Technical Notes
 
+**Engine:** Godot 4 (client).
 **Source control:** GitHub repo.
 **Backend hosting:** Railway.
+
+Current status: the **server** is built (Node + Express + Postgres) and the
+**client** has a Godot 4 project with sign-in wired to the backend. Everything
+else below is still to do.
 
 The backend needs to handle:
 
@@ -191,10 +197,12 @@ The backend needs to handle:
 | **Multiplayer** | Match players into worlds, sync positions/combat (may need a realtime service, not just HTTP) |
 | **Daily quests** | Roll the daily quest list, track per-player completion/reset |
 
-Suggested starting stack (easy to host on Railway):
-- **API:** Node.js (Express or Fastify) or Python (FastAPI)
-- **Database:** PostgreSQL (Railway has a one-click Postgres)
-- **Realtime multiplayer:** WebSockets (Socket.IO) or a dedicated game-server process
+Stack in use:
+- **API:** Node.js + Express  (`server/`)
+- **Database:** PostgreSQL (Railway one-click Postgres)
+- **Realtime multiplayer:** *not built yet* - will need Godot's high-level
+  multiplayer (ENet) with a headless Godot server, or WebSockets. Separate from
+  the HTTP API above.
 
 Suggested repo layout:
 ```

@@ -1,0 +1,19 @@
+; Godot 4 project file. Open this folder in Godot 4.x (4.2 or newer).
+; If your Godot version differs it will offer to convert - that's fine.
+
+config_version=5
+
+[application]
+
+config/name="Glungus's Forest"
+run/main_scene="res://scenes/main_menu.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Api="*res://scripts/api.gd"
+
+[rendering]
+
+renderer/rendering_method="forward_plus"

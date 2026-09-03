@@ -6,7 +6,7 @@ A 3rd-person action RPG. Full design in [docs/GAME_DESIGN.md](docs/GAME_DESIGN.m
 
 ```
 glungus-forest/
-  client/   the game itself (engine project, assets) - not built yet
+  client/   the game itself - Godot 4 project (sign-in wired up, rest to build)
   server/   the backend: sign-in, save data, leaderboard  (deploys to Railway)
   shared/   data both sides use: world list, item list
   docs/     design document
@@ -37,6 +37,14 @@ You need [Node.js](https://nodejs.org/) 20+ and a Postgres database.
    The API is now at `http://localhost:3000`. Tables are created automatically on first start.
 
 Try it: open `server/api.http` in VS Code (with the "REST Client" extension) and run the requests top to bottom.
+
+## Running the game (client)
+
+1. Install [Godot 4](https://godotengine.org/download) (standard build, not .NET).
+2. In Godot: **Import** -> pick the `client/` folder -> **Edit** -> press **F5**.
+3. You'll get the sign-in screen. Start the server first (above) so it can log in.
+
+More detail in [client/README.md](client/README.md).
 
 ## Deploying the server to Railway
 
