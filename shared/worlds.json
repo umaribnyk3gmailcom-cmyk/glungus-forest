@@ -1,0 +1,16 @@
+{
+  "_comment": "Sample world list. The client and server both read this. Fill in the rest as you design them.",
+  "worlds": [
+    { "id": 1,  "name": "Glungus's Forest",       "owner": "Glungus",      "levelRange": [1, 3],    "biome": "forest" },
+    { "id": 2,  "name": "Mosslight Hollow",        "owner": "Glungus",      "levelRange": [3, 6],    "biome": "forest" },
+    { "id": 66, "name": "The Last Kingdom Gate",   "owner": "Glungus",      "levelRange": [60, 66],  "biome": "citadel" },
+    { "id": 67, "name": "First Family World",      "owner": "family-member-1 (TBD)", "levelRange": [67, 70], "biome": "TBD" },
+    { "id": 99, "name": "Ninth Family World",      "owner": "family-member-33 (TBD)", "levelRange": [95, 99], "biome": "TBD" },
+    { "id": 100, "name": "Blungus's Hideout",      "owner": "Lord Blungus", "levelRange": [98, 100], "biome": "alien-fortress", "boss": "Lord Blungus" }
+  ],
+  "secretWorlds": {
+    "range": [101, 600],
+    "locked": true,
+    "note": "Endgame. Tied to the family's secret and the plan to replace Glungus with Mungus."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "_comment": "Sample item + material list. Rarity of materials is 'based on real life' (see design doc).",
+  "weapons": [
+    { "id": "starter_sword",  "name": "Newcomer's Sword", "type": "sword",    "rarity": "common",   "damage": 5 },
+    { "id": "old_pistol",     "name": "Old Pistol",       "type": "gun",      "rarity": "common",   "damage": 4 },
+    { "id": "forest_bow",     "name": "Forest Bow",       "type": "gun",      "rarity": "uncommon", "damage": 9 },
+    { "id": "blade_of_glungus","name": "Blade of Glungus","type": "mythical", "rarity": "mythical", "damage": 80 }
+  ],
+  "materials": [
+    { "id": "wood",    "name": "Wood",    "rarity": "common",   "sell": 1 },
+    { "id": "iron",    "name": "Iron",    "rarity": "uncommon", "sell": 5 },
+    { "id": "gold",    "name": "Gold",    "rarity": "rare",     "sell": 20 },
+    { "id": "diamond", "name": "Diamond", "rarity": "epic",     "sell": 75 }
+  ],
+  "rarities": ["common", "uncommon", "rare", "epic", "legendary", "mythical"]
+}

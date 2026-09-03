@@ -1,0 +1,45 @@
+### Glungus's Forest API - sample requests
+### Open in VS Code with the "REST Client" extension and click "Send Request".
+### Run them top to bottom. After login, the token is reused automatically.
+
+@base = http://localhost:3000
+
+### Health check
+GET {{base}}/health
+
+### Register a new player
+# @name register
+POST {{base}}/auth/register
+Content-Type: application/json
+
+{ "username": "player1", "password": "hunter2" }
+
+### Log in (grabs a fresh token)
+# @name login
+POST {{base}}/auth/login
+Content-Type: application/json
+
+{ "username": "player1", "password": "hunter2" }
+
+@token = {{login.response.body.token}}
+
+### Load my save
+GET {{base}}/save
+Authorization: Bearer {{token}}
+
+### Update my save (as if hitting a checkpoint)
+PUT {{base}}/save
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "level": 12, "world": 4, "currency": 350, "data": { "skin": "gold", "pets": ["forest_cat"] } }
+
+### Record a boss kill
+POST {{base}}/leaderboard/boss
+Authorization: Bearer {{token}}
+
+### Public leaderboard, sorted by level
+GET {{base}}/leaderboard?sort=level&limit=25
+
+### Public leaderboard, sorted by furthest world
+GET {{base}}/leaderboard?sort=world&limit=25
