@@ -13,9 +13,10 @@ that everything so far has been a **simulation** — and the real escape is only
 beginning.
 
 - **Genre:** 3rd-person action RPG, level-based, online multiplayer
-- **Inspirations:** Terraria (worlds, materials, crafting feel), Blox Fruits
-  (level-scaled enemies, progression), Pokémon (how characters, items, the
-  quest-giver, and the interface are presented)
+- **Inspirations:** Terraria (art style, worlds, materials), Blox Fruits
+  (level-scaled enemies, progression), Minecraft (weapon tiers + enchantments),
+  Pokémon (how characters, items, the quest-giver, and the interface are
+  presented), plus parkour/obstacle-course stages
 - **Perspective:** 3rd person
 - **Engine:** Godot 4 (GDScript)
 - **Platform target:** PC. Online multiplayer, with a backend hosted on **Railway**
@@ -92,25 +93,55 @@ in, Glungus standing ahead.*
 
 ## 5. Core Systems
 
-### Weapons
-- **Guns**, **swords**, and **mythical items**
-- Obtained/upgraded at the **weapon station** at checkpoints
+### Worlds & Stages
+- The game is **Worlds**, and each World is **100 Stages**.
+  - **Stages 1–99** are levels — a mix of combat gauntlets and parkour stages
+    (see below). Beat one to unlock the next.
+  - **Stage 100** is the **World boss**. Beating it opens the **portal** to the
+    next World and hands out World-clear rewards.
+- Progression inside a World is **level-based**, Blox Fruits style — mobs and the
+  boss scale to your level, and later Stages sit at higher levels.
+- **The Worlds** (this is the "1–66 / 67–99 / 100 / 101–600" numbering from the
+  earlier notes — those are Worlds, each with its own 100 Stages):
+  - **Worlds 1–66** — Glungus's kingdom.
+  - **Worlds 67–99** — one per family member; they quietly work against you here.
+  - **World 100** — Blungus's hideout (Act 1 finale).
+  - **Worlds 101–600** — the secret Worlds, locked, tied to the family's plan.
+- *Scope note:* 600 Worlds × 100 Stages is the long-term vision. The build focuses
+  on **World 1** first — get its 100 Stages fun, then template the rest.
 
-### Levels & Worlds
-- Progression is **level-based**, like Blox Fruits — enemies scale to level.
-- **Worlds 1–66** are Glungus's kingdom.
-- **Worlds 67–99** are owned by **other members of Glungus's family** — one world
-  each. These are the worlds you fight through chasing Blungus, and the family
-  quietly works against you here.
-- Each world ends with a **portal** to the next world.
-- Finishing a world gives **rewards**.
-- **World 100** is Blungus's hideout (Act 1 finale).
-- **Levels/worlds 101–600** are the **secret levels** — locked, hidden, tied to
-  the family's secret. Endgame content.
+### Stage types
+- **Combat stages** — rooms/areas of level-scaled mobs; clear them all (or reach
+  the exit) to finish.
+- **Parkour / obstacle stages** — no or few mobs; precision jumps, moving and
+  disappearing platforms, spike pits, swinging hazards, timed doors. Pure
+  platforming for pacing variety.
+- **Boss stage** — Stage 100.
+- Most Stages mix the two: a parkour section *then* a fight, or hazards during a
+  fight.
+
+### Weapons
+Three families:
+1. **Guns** — ranged. Pistols → rifles → heavier stuff.
+2. **Minecraft-style gear** — melee and tools on a material ladder:
+   **wood → stone → iron → gold → diamond → netherite**. Swords, axes, pickaxes,
+   bows. Higher tier = more damage / durability.
+3. **Mythical items** — rare, one-of-a-kind weapons with special effects.
+- Bought / upgraded at the **weapon station** at checkpoints.
+
+### Weapon enchantments
+- **Minecraft-style enchantments** applied at an **enchant station** (added to the
+  checkpoint stations).
+- Melee: Sharpness, Fire Aspect, Knockback, Looting, Sweeping, Unbreaking, Mending.
+- Ranged (guns / bows): Power, Punch, Quick Charge, Infinity, Multishot.
+- Room for game-original enchants too (e.g. "Glungus's Favor" — extra coins).
+- Enchants cost currency and/or materials; higher levels cost more.
 
 ### Entities / Enemies
 - Enemy strength is **based on level**, Blox Fruits style.
-- **Mobs** drop currency scaled to their level.
+- **Mobs** drop currency scaled to their level, and sometimes **materials** or
+  weapon drops.
+- Each World has its own mob set themed to that World.
 
 ### Pets
 - Pets **follow the player**.
@@ -131,10 +162,13 @@ Earned by:
 ### Checkpoints
 Each checkpoint contains:
 - The **checkpoint** itself (respawn / save point)
-- **Weapon station**
+- **Weapon station** (buy / upgrade guns, Minecraft-tier gear, mythicals)
+- **Enchant station** (apply weapon enchantments)
 - **Potion station**
 - **Character skins station**
 - **Healing chamber**
+
+Checkpoints sit between Stages (and mid-Stage on the longer ones).
 
 ---
 
@@ -162,6 +196,7 @@ Each checkpoint contains:
 Newcomer arrives
    → Glungus cutscene + starter quests (tutorial)
       → Glungus captured by Lord Blungus
+         → each World = Stages 1..99 (combat + parkour) then Stage 100 = boss → portal
          → Worlds 1 .......... 66   (Glungus's kingdom)
          → Worlds 67 ......... 99   (one world per family member - they work against you)
          → World 100               (Blungus hideout - BOSS)
@@ -187,7 +222,8 @@ Current status:
 - **Client** (Godot 4): sign-in screen, and **World 1 - Glungus's Forest** is
   playable - walk around, talk to Glungus, do the glow-berry starter quest, hit a
   checkpoint (saves to the backend), reach the portal, watch Glungus get snatched.
-- **Still to do:** real terrain/art, enemies, more worlds, the checkpoint
+- **Still to do:** real terrain/art, mobs + combat, guns and Minecraft-tier
+  weapons, enchantments, parkour stages, the 100-Stage structure, checkpoint
   stations, pets, daily quests, multiplayer.
 
 The backend needs to handle:
@@ -242,6 +278,17 @@ glungus-forest/
    "the one captured"?
 8. **Level cap / balancing** — how far does a normal player get before the secret
    levels? Is 1–100 tens of hours, or a weekend?
+9. **Stage mix per World** — of the 100 Stages, roughly how many are combat vs
+   parkour vs mini-boss? A pattern (e.g. every 10th is a mini-boss, every 5th is
+   parkour, Stage 100 is the boss) keeps it from feeling random.
+10. **How does a Stage end?** Reach the exit portal, kill everything, or hit a
+    survive-the-timer? Probably per Stage type.
+11. **Do weapons carry between Worlds, or reset?** Blox Fruits keeps them; a fresh
+    start each World makes the Minecraft tier ladder matter more.
+12. **Enchantment cap** — one enchant per weapon, or a Minecraft-style stack? And
+    can you re-roll a bad one?
+13. **Building 100 Stages by hand is a lot.** Decide early: hand-built Stages, or a
+    template + a Stage editor / procedural layout with hand-tuned set pieces.
 
 ---
 

@@ -1,16 +1,37 @@
 {
-  "_comment": "Sample item + material list. Rarity of materials is 'based on real life' (see design doc).",
+  "_comment": "Weapons, materials, enchantments. Rarity of materials is 'based on real life' (see design doc).",
+
+  "weaponFamilies": {
+    "gun": "ranged - pistols, rifles, heavier",
+    "mc-gear": "Minecraft-style melee/tools on a material ladder",
+    "mythical": "rare one-of-a-kind weapons with special effects"
+  },
+
+  "mcTiers": ["wood", "stone", "iron", "gold", "diamond", "netherite"],
+
   "weapons": [
-    { "id": "starter_sword",  "name": "Newcomer's Sword", "type": "sword",    "rarity": "common",   "damage": 5 },
-    { "id": "old_pistol",     "name": "Old Pistol",       "type": "gun",      "rarity": "common",   "damage": 4 },
-    { "id": "forest_bow",     "name": "Forest Bow",       "type": "gun",      "rarity": "uncommon", "damage": 9 },
-    { "id": "blade_of_glungus","name": "Blade of Glungus","type": "mythical", "rarity": "mythical", "damage": 80 }
+    { "id": "wood_sword",     "name": "Wooden Sword",   "family": "mc-gear",  "tier": "wood",    "type": "sword", "damage": 4 },
+    { "id": "iron_sword",     "name": "Iron Sword",     "family": "mc-gear",  "tier": "iron",    "type": "sword", "damage": 12 },
+    { "id": "netherite_axe",  "name": "Netherite Axe",  "family": "mc-gear",  "tier": "netherite","type": "axe",  "damage": 34 },
+    { "id": "old_pistol",     "name": "Old Pistol",     "family": "gun",      "type": "gun",     "damage": 6 },
+    { "id": "forest_rifle",   "name": "Forest Rifle",   "family": "gun",      "type": "gun",     "damage": 18 },
+    { "id": "blade_of_glungus","name": "Blade of Glungus","family": "mythical","type": "mythical","damage": 80, "effect": "heals 2 HP per hit" }
   ],
+
+  "enchantments": {
+    "melee":  ["Sharpness", "Fire Aspect", "Knockback", "Looting", "Sweeping", "Unbreaking", "Mending"],
+    "ranged": ["Power", "Punch", "Quick Charge", "Infinity", "Multishot", "Unbreaking", "Mending"],
+    "original": ["Glungus's Favor (extra coins)", "Rooted (slows enemies on hit)"],
+    "_rules": "Applied at the enchant station. Cost = currency + materials, scaling with level. Cap: TBD (see design doc open questions)."
+  },
+
   "materials": [
     { "id": "wood",    "name": "Wood",    "rarity": "common",   "sell": 1 },
     { "id": "iron",    "name": "Iron",    "rarity": "uncommon", "sell": 5 },
     { "id": "gold",    "name": "Gold",    "rarity": "rare",     "sell": 20 },
-    { "id": "diamond", "name": "Diamond", "rarity": "epic",     "sell": 75 }
+    { "id": "diamond", "name": "Diamond", "rarity": "epic",     "sell": 75 },
+    { "id": "netherite_scrap", "name": "Netherite Scrap", "rarity": "legendary", "sell": 200 }
   ],
+
   "rarities": ["common", "uncommon", "rare", "epic", "legendary", "mythical"]
 }

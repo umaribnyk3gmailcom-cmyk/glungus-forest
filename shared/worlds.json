@@ -1,16 +1,25 @@
 {
-  "_comment": "Sample world list. The client and server both read this. Fill in the rest as you design them.",
+  "_comment": "World + stage config. The client and server both read this. Fill in the rest as you design them.",
+  "stagesPerWorld": 100,
+  "stageTypes": ["combat", "parkour", "mini-boss", "boss"],
+  "stageRules": {
+    "_comment": "Starting point for the per-World stage pattern - tune later.",
+    "boss": "stage 100",
+    "miniBossEvery": 10,
+    "parkourEvery": 5,
+    "rest": "combat"
+  },
   "worlds": [
-    { "id": 1,  "name": "Glungus's Forest",       "owner": "Glungus",      "levelRange": [1, 3],    "biome": "forest" },
-    { "id": 2,  "name": "Mosslight Hollow",        "owner": "Glungus",      "levelRange": [3, 6],    "biome": "forest" },
-    { "id": 66, "name": "The Last Kingdom Gate",   "owner": "Glungus",      "levelRange": [60, 66],  "biome": "citadel" },
-    { "id": 67, "name": "First Family World",      "owner": "family-member-1 (TBD)", "levelRange": [67, 70], "biome": "TBD" },
-    { "id": 99, "name": "Ninth Family World",      "owner": "family-member-33 (TBD)", "levelRange": [95, 99], "biome": "TBD" },
-    { "id": 100, "name": "Blungus's Hideout",      "owner": "Lord Blungus", "levelRange": [98, 100], "biome": "alien-fortress", "boss": "Lord Blungus" }
+    { "id": 1,  "name": "Glungus's Forest",     "owner": "Glungus",      "levelRange": [1, 8],    "biome": "forest",         "stages": 100 },
+    { "id": 2,  "name": "Mosslight Hollow",      "owner": "Glungus",      "levelRange": [8, 16],   "biome": "forest",         "stages": 100 },
+    { "id": 66, "name": "The Last Kingdom Gate", "owner": "Glungus",      "levelRange": [500, 520],"biome": "citadel",        "stages": 100 },
+    { "id": 67, "name": "First Family World",    "owner": "family-member-1 (TBD)",  "levelRange": [520, 540], "biome": "TBD", "stages": 100 },
+    { "id": 99, "name": "Ninth Family World",    "owner": "family-member-33 (TBD)", "levelRange": [740, 760], "biome": "TBD", "stages": 100 },
+    { "id": 100, "name": "Blungus's Hideout",    "owner": "Lord Blungus", "levelRange": [760, 800], "biome": "alien-fortress", "stages": 100, "boss": "Lord Blungus" }
   ],
   "secretWorlds": {
     "range": [101, 600],
     "locked": true,
-    "note": "Endgame. Tied to the family's secret and the plan to replace Glungus with Mungus."
+    "note": "Endgame Worlds. Tied to the family's secret and the plan to replace Glungus with Mungus."
   }
 }
