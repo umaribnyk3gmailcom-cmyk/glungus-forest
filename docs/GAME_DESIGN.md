@@ -121,13 +121,19 @@ in, Glungus standing ahead.*
   fight.
 
 ### Weapons
-Three families:
-1. **Guns** — ranged. Pistols → rifles → heavier stuff.
-2. **Minecraft-style gear** — melee and tools on a material ladder:
-   **wood → stone → iron → gold → diamond → netherite**. Swords, axes, pickaxes,
-   bows. Higher tier = more damage / durability.
-3. **Mythical items** — rare, one-of-a-kind weapons with special effects.
-- Bought / upgraded at the **weapon station** at checkpoints.
+
+**Progression order — you unlock these in sequence:**
+
+1. **Start:** every player begins with a **Wooden Sword**.
+2. **Melee / medieval ladder** — the main early-to-mid game. Minecraft-style
+   material tiers: **wood → stone → iron → gold → diamond → netherite**, plus
+   medieval variants (axes, maces, spears, bows). Higher tier = more damage /
+   durability. Unlock and upgrade at the **weapon station** on checkpoints.
+3. **Guns** — ranged. **Locked until you've unlocked every melee / medieval
+   weapon.** Once the melee ladder is complete, guns open up as the next tier
+   (pistols → rifles → heavier).
+4. **Mythical items** — rare, one-of-a-kind weapons with special effects. These
+   drop rarely throughout (not part of the ladder gate).
 
 ### Weapon enchantments
 - **Minecraft-style enchantments** applied at an **enchant station** (added to the

@@ -2,19 +2,25 @@
   "_comment": "Weapons, materials, enchantments. Rarity of materials is 'based on real life' (see design doc).",
 
   "weaponFamilies": {
-    "gun": "ranged - pistols, rifles, heavier",
-    "mc-gear": "Minecraft-style melee/tools on a material ladder",
-    "mythical": "rare one-of-a-kind weapons with special effects"
+    "melee": "medieval melee on the Minecraft material ladder - the main progression",
+    "gun": "ranged - LOCKED until every melee/medieval weapon is unlocked",
+    "mythical": "rare one-of-a-kind weapons with special effects (drop anytime, not gated)"
   },
 
+  "startingWeapon": "wood_sword",
   "mcTiers": ["wood", "stone", "iron", "gold", "diamond", "netherite"],
+  "unlockOrder": ["melee-ladder (all of it)", "then guns", "mythicals drop anytime"],
+  "gunsLockedUntil": "player has unlocked every melee/medieval weapon",
 
   "weapons": [
-    { "id": "wood_sword",     "name": "Wooden Sword",   "family": "mc-gear",  "tier": "wood",    "type": "sword", "damage": 4 },
-    { "id": "iron_sword",     "name": "Iron Sword",     "family": "mc-gear",  "tier": "iron",    "type": "sword", "damage": 12 },
-    { "id": "netherite_axe",  "name": "Netherite Axe",  "family": "mc-gear",  "tier": "netherite","type": "axe",  "damage": 34 },
-    { "id": "old_pistol",     "name": "Old Pistol",     "family": "gun",      "type": "gun",     "damage": 6 },
-    { "id": "forest_rifle",   "name": "Forest Rifle",   "family": "gun",      "type": "gun",     "damage": 18 },
+    { "id": "wood_sword",      "name": "Wooden Sword",    "family": "melee", "tier": "wood",     "type": "sword", "damage": 4,  "starter": true },
+    { "id": "stone_sword",     "name": "Stone Sword",     "family": "melee", "tier": "stone",    "type": "sword", "damage": 7 },
+    { "id": "iron_sword",      "name": "Iron Sword",      "family": "melee", "tier": "iron",     "type": "sword", "damage": 12 },
+    { "id": "iron_spear",      "name": "Iron Spear",      "family": "melee", "tier": "iron",     "type": "spear", "damage": 11 },
+    { "id": "diamond_sword",   "name": "Diamond Sword",   "family": "melee", "tier": "diamond",  "type": "sword", "damage": 22 },
+    { "id": "netherite_axe",   "name": "Netherite Axe",   "family": "melee", "tier": "netherite","type": "axe",   "damage": 34 },
+    { "id": "old_pistol",      "name": "Old Pistol",      "family": "gun",   "type": "gun",      "damage": 26, "unlockedBy": "complete melee ladder" },
+    { "id": "forest_rifle",    "name": "Forest Rifle",    "family": "gun",   "type": "gun",      "damage": 40, "unlockedBy": "complete melee ladder" },
     { "id": "blade_of_glungus","name": "Blade of Glungus","family": "mythical","type": "mythical","damage": 80, "effect": "heals 2 HP per hit" }
   ],
 
