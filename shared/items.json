@@ -1,5 +1,6 @@
 {
   "_comment": "Weapons, materials, enchantments. Rarity of materials is 'based on real life' (see design doc).",
+  "_currency": "Coins are the only currency. Everything purchasable costs coins: weapons, upgrades, enchants, potions, skins, healing.",
 
   "weaponFamilies": {
     "melee": "medieval melee on the Minecraft material ladder - the main progression",
@@ -28,7 +29,7 @@
     "melee":  ["Sharpness", "Fire Aspect", "Knockback", "Looting", "Sweeping", "Unbreaking", "Mending"],
     "ranged": ["Power", "Punch", "Quick Charge", "Infinity", "Multishot", "Unbreaking", "Mending"],
     "original": ["Glungus's Favor (extra coins)", "Rooted (slows enemies on hit)"],
-    "_rules": "Applied at the enchant station. Cost = currency + materials, scaling with level. Cap: TBD (see design doc open questions)."
+    "_rules": "Applied at the enchant station. Cost = coins, scaling with enchant level. Cap: TBD (see design doc open questions)."
   },
 
   "materials": [

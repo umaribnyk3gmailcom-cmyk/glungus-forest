@@ -141,11 +141,11 @@ in, Glungus standing ahead.*
 - Melee: Sharpness, Fire Aspect, Knockback, Looting, Sweeping, Unbreaking, Mending.
 - Ranged (guns / bows): Power, Punch, Quick Charge, Infinity, Multishot.
 - Room for game-original enchants too (e.g. "Glungus's Favor" — extra coins).
-- Enchants cost currency and/or materials; higher levels cost more.
+- Enchants **cost coins**; higher enchant levels cost more.
 
 ### Entities / Enemies
 - Enemy strength is **based on level**, Blox Fruits style.
-- **Mobs** drop currency scaled to their level, and sometimes **materials** or
+- **Mobs** drop coins scaled to their level, and sometimes **materials** or
   weapon drops.
 - Each World has its own mob set themed to that World.
 
@@ -153,12 +153,18 @@ in, Glungus standing ahead.*
 - Pets **follow the player**.
 - **Some pets attack other players** (useful in PvP).
 
-### Currency
+### Currency — Coins
+**Coins are the one and only currency. Everything costs coins:** weapons, weapon
+upgrades, enchantments, potions, skins, healing, unlocks — all of it.
+
 Earned by:
 - Completing **quests**
-- **Breaking materials** — material rarity is "based on real life" rarity (common
-  stone vs. rare metals vs. gems)
 - **Killing mobs**, scaled by level
+- **Breaking materials** and selling them — material rarity is "based on real life"
+  rarity (common stone vs. rare metals vs. gems); rarer material = more coins
+- Clearing **Stages** and **Worlds**
+
+Coins are stored on your account (server-validated so they can't be cheated).
 
 ### Quests
 - From the **Quest Giver** NPC
@@ -167,14 +173,15 @@ Earned by:
 
 ### Checkpoints
 Each checkpoint contains:
-- The **checkpoint** itself (respawn / save point)
-- **Weapon station** (buy / upgrade guns, Minecraft-tier gear, mythicals)
-- **Enchant station** (apply weapon enchantments)
-- **Potion station**
-- **Character skins station**
-- **Healing chamber**
+- The **checkpoint** itself (respawn / save point — free)
+- **Weapon station** — buy / upgrade melee-ladder gear, later guns, mythicals *(coins)*
+- **Enchant station** — apply weapon enchantments *(coins)*
+- **Potion station** — buy potions *(coins)*
+- **Character skins station** — buy skins *(coins)*
+- **Healing chamber** — heal up *(coins)*
 
-Checkpoints sit between Stages (and mid-Stage on the longer ones).
+Every station spends **coins**. Checkpoints sit between Stages (and mid-Stage on
+the longer ones).
 
 ---
 
